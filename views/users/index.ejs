@@ -1,0 +1,25 @@
+<h2>Create new user</h2>
+<form class="new-user">
+  <div class="row">
+    <div class="four columns">
+      <input type="text" name="user[name]" id="user-name" placeholder="Name" class="u-full-width">
+    </div>
+    <div class="four columns">
+      <input type="number" name="user[age]" id="user-age" placeholder="Age" class="u-full-width">
+    </div>
+    <div class="four columns">
+      <input type="text" name="user[password]" id="user-password" placeholder="Password" class="u-full-width">
+    </div>
+    <input type="submit" value='Save New User'>
+  </div>
+
+  <%# <ul id="all-user-list">
+  <% allUsers.forEach(function(user) { %>
+    <li>
+        <%= user.name %><br>
+        <%= user.email %><br>
+        <%= user.password %>
+    </li>
+  <% }) %>
+  </ul>%>
+</form>
