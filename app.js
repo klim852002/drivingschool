@@ -6,7 +6,15 @@ var bodyParser = require('body-parser')
 // mongoose stuffs
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/driving-school')
+
+console.log('the environment is on ' +  process.env.NODE.ENV)
+
+if(proces.env.NODE.ENV === 'production') {
+  mongoose.connect('mongodb://Bruno:10Ehcbmp@ds061318.mlab.com:61318/project2')
+} else {
+  mongoose.connect('mongodb://localhost/driving-school')
+}
+
 // set views and layout
 app.set('view engine', 'ejs')
 app.use(layout)
@@ -32,5 +40,5 @@ app.use('/users', usersRoutes)
 // only handle ajax request
 app.use('/api/users', usersAPIRoutes)
 
-app.listen(3000)
-console.log('Server started')
+app.listen(process.env.PORT||3000)
+// console.log('Server started')
