@@ -3,7 +3,7 @@ var app = express()
 var layout = require('express-ejs-layouts')
 var bodyParser = require('body-parser')
 var dotenv = require('dotenv')
-
+var bcrypt = require('bcrypt')
 // mongoose stuffs
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise

@@ -22,6 +22,6 @@ $(document).ready(function ($) {
   function doSomething (data) {
     alert('new user created')
     alert(data)
-    $('#all-user-list').append('<li>' + data.name + data.password + '</li>')
+    $('#all-user-list').append('<li>' + data.name + data.age + data.password + '</li>')
   }
 })
