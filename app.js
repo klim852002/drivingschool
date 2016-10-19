@@ -2,20 +2,24 @@ var express = require('express')
 var app = express()
 var layout = require('express-ejs-layouts')
 var bodyParser = require('body-parser')
+var dotenv = require('dotenv')
 
 // mongoose stuffs
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 // mongoose.connect('mongodb://localhost/driving-school')
-console.log('the environment is on ' +  process.env.NODE_ENV)
-
-if(process.env.NODE_ENV === 'production') {
-  mongoose.connect('mongodb://Bruno:10Ehcbmp@ds061318.mlab.com:61318/project2')
-} else {
-  mongoose.connect('mongodb://localhost/driving-school')
-}
-
-
+// console.log('the environment is on ' + process.env.NODE_ENV)
+//
+// if(process.env.NODE_ENV === 'production') {
+//   mongoose.connect('mongodb://Bruno:10Ehcbmp@ds061318.mlab.com:61318/project2')
+// } else {
+//   mongoose.connect('mongodb://localhost/driving-school')
+// }
+/**
+ * Load environment variables from .env file, where API keys and passwords are configured.
+ */
+dotenv.load({ path: '.env.' + process.env.NODE_ENV })
+mongoose.connect(process.env.MONGO_URI)
 // set views and layout
 app.set('view engine', 'ejs')
 app.use(layout)
