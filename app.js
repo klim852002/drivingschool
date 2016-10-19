@@ -9,7 +9,7 @@ mongoose.Promise = global.Promise
 // mongoose.connect('mongodb://localhost/driving-school')
 console.log('the environment is on ' +  process.env.NODE_ENV)
 
-if(proces.env.NODE_ENV === 'production') {
+if(process.env.NODE_ENV === 'production') {
   mongoose.connect('mongodb://Bruno:10Ehcbmp@ds061318.mlab.com:61318/project2')
 } else {
   mongoose.connect('mongodb://localhost/driving-school')
