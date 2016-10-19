@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
 var bcrypt = require('bcrypt')
 
 var userSchema = new mongoose.Schema({
+  // local login to check password against local databse for local login
   local: {
     name: String,
     age: Number,
@@ -12,20 +13,20 @@ var userSchema = new mongoose.Schema({
   }
 })
 
-userSchema.pre('save', function (next){
+userSchema.pre('save', function (next) {
   console.log('before save hash password')
   console.log(this)
 
   var user = this
 
-  bcrypt.genSalt(5, function (err, salt){
+  bcrypt.genSalt(5, function (err, salt) {
     if (err) return next(err)
 
-    bcrypt.hash(user.local.password, salt, function (err, hash){
+    bcrypt.hash(user.local.password, salt, function (err, hash) {
       if (err) return next (err)
 
-    user.local.pasword = hash
-    console.log('ater hash')
+    user.local.password = hash
+    console.log('after hash')
     console.log(user)
     next()
     })
