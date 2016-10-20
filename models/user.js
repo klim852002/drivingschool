@@ -7,8 +7,7 @@ var userSchema = new mongoose.Schema({
     name: String,
     age: Number,
     password: {
-      type: String,
-      required: true
+      type: String, required: true
     }
   }
 })
@@ -36,6 +35,11 @@ userSchema.pre('save', function (next) {
 userSchema.post('save', function () {
   console.log('save successful')
 })
+
+userSchema.methods.authenticate = function (givenPassword, callback) {
+  var hashedPassword = this.local.password
+  bcrypt.compare()
+}
 
 var User = mongoose.model('User', userSchema)
 
